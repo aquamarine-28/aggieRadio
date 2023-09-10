@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggie Radio</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="backend.js" defer></script>
+
+</head>
+
+<body>
+    <div class = "audioControls">
+        <audio controls>
+            <source src="1 A.M Study Session  [lofi hip hopchill beats].mp3" type="audio/mpeg">
+            <!-- You can add multiple source elements for different file formats -->
+            <!-- <source src="your-audio-file.ogg" type="audio/ogg"> -->
+        </audio>
+
+
+    </div>
+
+    <div class="stopwatch-container">
+        <div class="stopwatch">00:00:00</div>
+        <p id="test-name" style="color: white;">...</p>
+        <div class="controls">
+            <button class="btn" id="start">Start</button>
+            <button class="btn" id="stop">Stop</button>
+            <button class="btn" id="reset">Reset</button>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="music-container">
+        <button class="music-btn" id="playButton"><span id="play"
+                class="material-symbols-outlined">play_arrow</span></button>
+        <button class="music-btn" id="prevSongButton"><span id="prev" class="material-symbols-outlined">
+                skip_previous</span></button>
+        <button class="music-btn" id="nextSongButton"><span id="next" class="material-symbols-outlined">
+                skip_next</span></button>
+    </div> -->
+
+    <div class="rev">
+        <a id="chatPageLink" href="chatPage.html"><img src="revFinal.PNG"></img></a>
+    </div>
+        
+    <div class="input-container">
+        
+        <input type="text" id="nameInput" name="name" placeholder="Name">
+        <br>
+        <input type="text" id="classInput" name="class" placeholder="Class">
+        <br>
+        <input type="text" id="locationInput" name="location" placeholder="Location">
+
+        <button type="text" id="informationButton" onclick="set_friend_name()">Search</button>
+
+        <!-- <script>
+            //makes a get request to our database to get a random joke
+            axios({
+              method: 'get',
+              url: 'http://localhost:3001/',
+            })
+            .then(function (response) {
+              //inserts joke into the card
+              let data = response.data;
+              let joke = data.joke || data.setup;
+              let answer = data.delivery || "";
+        
+              friendElem = document.getElementById("friendName");
+        
+              friendElem.innerHTML = friend
+            });
+          </script> -->
+
+
+    </div>
+
+
+
+        <script>
+            var data = [
+        {
+            "name": "John Doe",
+            "location": "MSC",
+            "class": "MATH 151"
+        },
+        {
+            "name": "Jane Smith",
+            "location": "Sterling C. Evans Library",
+            "class": "MATH 152"
+        },
+        {
+            "name": "Michael Johnson",
+            "location": "Zachry Engineering Education Complex",
+            "class": "PHYS 206"
+        },
+        {
+            "name": "Emily Davis",
+            "location": "ILCB",
+            "class": "STAT 211"
+        },
+        {
+            "name": "David Wilson",
+            "location": "The Commons",
+            "class": "ENGR 216"
+        },
+        {
+            "name": "Sarah Lee",
+            "location": "ILSQ",
+            "class": "CSCE 121"
+        },
+        {
+            "name": "Robert Brown",
+            "location": "Quadbucks",
+            "class": "POLS 206"
+        },
+        {
+            "name": "Olivia Jones",
+            "location": "Liberal Arts and Humanities Building",
+            "class": "CSCE 121"
+        },
+        {
+            "name": "William Martinez",
+            "location": "MSC",
+            "class": "MATH 140"
+        },
+        {
+            "name": "Sophia Rodriguez",
+            "location": "Whitecreek Apartments",
+            "class": "CHEM 117"
+        },
+        {
+            "name": "James Taylor",
+            "location": "Blocker",
+            "class": "CHEM 107"
+        },
+        {
+            "name": "Ava Garcia",
+            "location": "Peterson Building",
+            "class": "CHEM 120"
+        },
+        {
+            "name": "Liam Hernandez",
+            "location": "Annex",
+            "class": "MATH 152"
+        },
+        {
+            "name": "Mia Wilson",
+            "location": "MSC",
+            "class": "MATH 151"
+        },
+        {
+            "name": "Benjamin Thomas",
+            "location": "Blocker",
+            "class": "POLS 206"
+        },
+        {
+            "name": "Charlotte Anderson",
+            "location": "The Commons",
+            "class": "MATH 140"
+        },
+        {
+            "name": "Ethan Walker",
+            "location": "MSC",
+            "class": "MATH 140"
+        },
+        {
+            "name": "Isabella Scott",
+            "location": "Zachry Engineering Education Complex",
+            "class": "PHYS 206"
+        },
+        {
+            "name": "Alexander White",
+            "location": "ILSQ",
+            "class": "CSCE 121"
+        },
+        {
+            "name": "Grace Harris",
+            "location": "Quadbucks",
+            "class": "CLEN 181"
+        }
+    ]
+    
+    
+            // window.addEventListener("load", async () => {
+            //     await fetch("./data.js").then(async (res) => {
+            //         data = JSON.parse(await res.text())
+                    
+            //         console.log("Data:", data)
+            //     });
+            // })
+    
+    
+    
+
+            // Function to find and print names with matching course or location
+            function findMatches() {
+                                // Specify the values you want to match
+                var searchCourse = document.getElementById("classInput").value; // Change this to the course you want to search for
+                var searchLocation = document.getElementById("locationInput").value; // Change this to the location you want to search for
+
+                // const searchCourse = document.getElementById("classInput");
+                // const searchLocation = document.getElementById("locationInput");
+                var friendName;
+        
+                for (const item of data) {
+                    if (item.class === searchCourse && item.location === searchLocation) {
+                        friendName = item.name;
+                        return friendName;
+                        // connect this to ui
+                    }
+                }
+            }
+    
+    
+    
+            function set_friend_name() {
+                
+                const element = document.getElementById("test-name")
+                if (findMatches() != null) {
+                    element.textContent = findMatches()
+                }
+            }
+        </script>
+
+
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-image: url(https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* .audioControls{
+            position: absolute;
+            top: 20%;
+            right:8%;
+            width: 200px;
+            height:200px;
+        }  */
+
+
+        .rev{
+            position: absolute;
+            top: 7%;
+            right:0%;
+            width: 200px;
+            height: 50%;
+            background-size: cover
+        }
+
+        .stopwatch-container {
+            position: absolute;
+            left: 10%;
+            background-color: #191919;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(4, 4, 4, 0.553);
+            width: 500px;
+            height: 350px;
+            text-align: center;
+        }
+
+        .music-btn {
+            position: fixed;
+            background: none;
+            border: none;
+            top: 190px;
+            color: #ff6b6b;
+
+        }
+
+        .music-container{
+            position: absolute;
+            top: 50%;
+            right:5%;
+            width: 200px;
+            height: 50%;
+        }
+
+        .stopwatch {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 5em;
+            padding: 60px;
+            background-color: #daa0a0;
+            border-radius: 5px;
+        }
+
+        .input-container{
+            font-family: 'Courier New', Courier, monospace;
+            /* background-color: #daa0a0; */
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            right:5%;
+            width: 200px;
+            height: 50%;
+
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff4444;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 100,
+                'wght' 200,
+                'GRAD' 0,
+                'opsz' 24
+        }
+/* 
+        #prevSongButton {
+            top: 470px;
+            left: 280px;
+        }
+
+        #nextSongButton {
+            top: 470px;
+            left: 430px;
+        }
+
+        #playButton {
+            top: 470px;
+            left: 350px;
+        }
+
+        #playButton:hover {
+            color: #ad2d2d;
+        }
+
+        #prevSongButton:hover {
+            color: #ad2d2d;
+        }
+
+        #nextSongButton:hover {
+            color: #ad2d2d;
+        } */
+/* 
+        #play {
+            font-size: 50px;
+        }
+
+        #pause {
+            font-size: 50px;
+        }
+
+        #prev {
+            font-size: 50px;
+        }
+
+        #next {
+            font-size: 50px;
+        } */
+
+        img {
+            position: absolute;
+            width: 300px;
+            height: auto;
+            right: 0%;
+            top: 0%
+        }
+
+        #nameInput {
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            font-size: x-large;
+            top: 35%;
+            right: 5%;
+            width: 160px;
+            background-color: #191919;
+            color: aliceblue;
+            border-radius: 5px;
+        }
+
+        #classInput {
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            font-size: x-large;
+            top: 45%;
+            right: 5%;
+            width: 160px;
+            background-color: #191919;
+            color: aliceblue;
+            border-radius: 5px;
+
+        }
+
+        #locationInput {
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            font-size: x-large;
+            top: 55%;
+            right: 5%;
+            width: 160px;
+            background-color: #191919;
+            color: aliceblue;
+            border-radius: 5px;
+
+        }
+
+        #informationButton {
+            font-family: 'Space Mono', monospace;
+            position: absolute;
+            font-size: x-large;
+            top: 70%;
+            right: 5%;
+            width: 165px;
+            height: 40px;
+            background-color: #191919;
+            color: aliceblue;
+            border-radius: 5px;
+
+        }
+        #informationButton:hover {
+            background-color: #b955a5;
+        }
+
+        .music-player {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+                        /* Add this to a CSS file or inside a <style> tag in your HTML */
+                            audio {
+            width: 100%;
+            max-width: 400px; /* Adjust the width as needed */
+            margin: 10px 0;
+            background-color: #f1f1f100;
+            /* border: 1px solid #ccc; */
+            /* border-radius: 5px; */
+            position: absolute;
+            top: 530px;
+            left: 17%;
+        }
+
+        /* Style the play and pause buttons */
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-pause-button {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+
+
+    </style>
+
+    <script>
+        let timer;
+        let isRunning = false;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function stopTimer() {
+            isRunning = false;
+            clearInterval(timer);
+        }
+
+        function resetTimer() {
+            stopTimer();
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            updateDisplay();
+        }
+
+        function updateTimer() {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            document.querySelector('.stopwatch').textContent = formattedTime;
+        }
+        document.getElementById('start').addEventListener('click', startTimer);
+        document.getElementById('stop').addEventListener('click', stopTimer);
+        document.getElementById('reset').addEventListener('click', resetTimer);
+    </script>
+</body>
+
+</html>
