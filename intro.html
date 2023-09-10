@@ -33,9 +33,10 @@
             margin: 0;
             font-size: 64px;
             color: #bdbdbd;
+            opacity: 1;
         }
 
-        #font1{
+        h1{
             font-family: "Turret Road";
         }
 
@@ -44,19 +45,32 @@
             margin: 0;
             font-size: 32px;
             font-family: 'Indie Flower', cursive;
+            opacity: 1;
         }
 
         .container {
             position: relative;
             top: 200px;
-            left: 15%;
+            left: 10%;
             width: 460px; 
             height: auto; 
-            /* background-color: #a20bc0;  Set the background color */
+            
+        }  
+
+        rect{
+            position: absolute;
+            top: -10px;
+            left: -5%;
+            width: 460px; 
+            height: 250px; 
+            background-color: #a20bc0; 
+            opacity: 0.5; 
+            z-index:-1;
+
             /* color: #fff;  Set the text color */
             /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
-            /* border-radius: 10px;
-            padding: 20px; */ 
+            border-radius: 10px;
+            padding: 20px; 
         }  
 
         .right-aligned {
@@ -83,7 +97,7 @@
 
         .button-container {
             position: absolute;
-            bottom: 20px;
+            bottom: 0.05%;
             right: 13%;
             width: 160px; 
             height: 200px; 
@@ -136,12 +150,13 @@
         <h2 font color= #e3e3e3 class= "right-aligned">Kill procrastination,</h2>
         <br>
         <h2  font color = #e3e3e3 class= "right-aligned">get it DONE (with others)</h2>
+        <rect></rect>
     </div>
     <div class="radio-container">
         <img src="giphy.gif" alt="Retro Radio">
     </div>
     <div class="button-container">
-        <a id="mainPageLink" href="main.html"><button id="mainPage">------------></Study></a> 
+        <a id="mainPageLink" href="main.html"><button id="mainPage" font color=#e3e3e3>------------></Study></a> 
     </div>
     <div class="howdy">
         <!-- <img src="howdylogo.png" alt="Howdy"> -->
