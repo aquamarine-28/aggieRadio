@@ -9,13 +9,22 @@
             margin: 0;
             padding: 0;
 
-            background-color: #CAFFFE;
+            background-color: #ce8ca1;
+
+            background-image: url(sunset.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            /* align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0; */
 
         }
 
         header {
-            background-color: #333;
-            color: #fff;
+            background-color: #222121;
+            color: #bdbdbd; 
             text-align: center;
             padding: 20px 0;
         }
@@ -23,7 +32,7 @@
         h1 {
             margin: 0;
             font-size: 64px;
-            
+            color: #bdbdbd;
         }
 
         #font1{
@@ -31,6 +40,7 @@
         }
 
         h2 {
+            color: #bdbdbd;
             margin: 0;
             font-size: 32px;
             font-family: 'Indie Flower', cursive;
@@ -41,7 +51,12 @@
             top: 200px;
             left: 15%;
             width: 460px; 
-            height: 200px; 
+            height: auto; 
+            /* background-color: #a20bc0;  Set the background color */
+            /* color: #fff;  Set the text color */
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+            /* border-radius: 10px;
+            padding: 20px; */ 
         }  
 
         .right-aligned {
@@ -97,18 +112,33 @@
             background-color: #18CCFE;
         }
     </style>
+
+
+
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" type="text/css" href="background.css"> -->
+
+    
+
+
+
+
+
+
 </head>
 <body>
     <div class="container">
-        <h2>Welcome to</h2>
+        <h2 font color= #e3e3e3 >Welcome to</h2>
         <h1 id="font1">The Aggie Radio</h1>
         <br>
-        <h2 class="right-aligned">Kill procrastination,</h2>
+        <h2 font color= #e3e3e3 class= "right-aligned">Kill procrastination,</h2>
         <br>
-        <h2 class="right-aligned">get it DONE (with others)</h2>
+        <h2  font color = #e3e3e3 class= "right-aligned">get it DONE (with others)</h2>
     </div>
     <div class="radio-container">
-        <img src="chatRadio.gif" alt="Retro Radio">
+        <img src="giphy.gif" alt="Retro Radio">
     </div>
     <div class="button-container">
         <a id="mainPageLink" href="main.html"><button id="mainPage">------------></Study></a> 
@@ -118,11 +148,14 @@
     </div>
 
     <style>
+
+
         .radio-container{
             position: absolute;
             top: -5%;
             left: 60%;
             height: 40px;
+            
         }
         img{
             position: relative;
